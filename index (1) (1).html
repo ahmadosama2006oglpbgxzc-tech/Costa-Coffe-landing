@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Costa Coffee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--espresso:#2a1810;--roast:#4a2c1d;--mocha:#7a5038;--beige:#e9d9c0;--sand:#f3eadb;--white:#fff;--ink:#2a1810;
+--display:'Reem Kufi','Cairo',Georgia,serif;--body:'Cairo',system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--white);color:var(--ink);font:400 17px/1.7 var(--body)}
+img,svg{max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--mocha);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;margin:0}
+h1{font-size:clamp(2.6rem,6vw,4.6rem)}
+h2{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+.btn{display:inline-block;font:700 1rem var(--body);padding:12px 28px;border-radius:999px;border:2px solid var(--espresso);background:var(--espresso);color:var(--white);cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:var(--white);color:var(--espresso)}
+.btn.light{background:var(--beige);color:var(--espresso);border-color:var(--beige)}
+.btn.light:hover{background:transparent;color:var(--beige)}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{background:var(--espresso);color:var(--white)}
+/* announcement */
+.promo{background:var(--beige);text-align:center;font-size:.95rem;padding:8px 16px;font-weight:600}
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--white);border-bottom:1px solid var(--beige)}
+.bar{display:flex;align-items:center;gap:28px;height:76px}
+.brand{display:flex;align-items:center;gap:10px;font:700 1.25rem var(--display);color:var(--espresso)}
+.brand svg{width:54px;height:54px;flex:none}
+nav{display:flex;gap:24px;font-weight:600;margin-inline-start:12px}
+nav a{padding:6px 0;border-bottom:2px solid transparent}
+nav a:hover{border-color:var(--espresso)}
+.tools{margin-inline-start:auto;display:flex;align-items:center;gap:12px}
+.lang{font:700 .95rem var(--body);border:2px solid var(--espresso);background:var(--white);color:var(--espresso);border-radius:999px;padding:6px 16px;cursor:pointer}
+.lang:hover{background:var(--espresso);color:var(--white)}
+.tools .btn{padding:8px 20px}
+.find{font-weight:600;white-space:nowrap}
+/* hero */
+.hero{background:var(--espresso);color:var(--sand);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:32px;min-height:560px;padding-block:48px}
+.hero p{font-size:1.2rem;max-width:30em;margin:20px 0 32px;color:var(--beige)}
+.hero .acts{display:flex;gap:14px;flex-wrap:wrap}
+.hero .btn.ghost:hover{color:var(--espresso);background:var(--beige)}
+.hero-art{display:grid;place-items:center}
+.hero-art svg{width:min(440px,100%);height:auto}
+.steam path{fill:none;stroke:var(--beige);stroke-width:5;stroke-linecap:round;opacity:0;animation:rise 4s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:1.3s}.steam path:nth-child(3){animation-delay:2.6s}
+@keyframes rise{0%{opacity:0;transform:translateY(14px)}35%{opacity:.8}100%{opacity:0;transform:translateY(-22px)}}
+/* feature blocks */
+.feature{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.feature>div{padding:clamp(32px,6vw,80px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:18px}
+.feature .art{display:grid;place-items:center;min-height:360px;padding:32px}
+.feature .art svg{width:min(280px,70%);height:auto}
+.feature.flip .art{order:2}
+.f1 .art{background:var(--beige);color:var(--roast)}
+.f2{background:var(--sand)}
+.f2 .art{background:var(--roast);color:var(--beige)}
+.f3 .art{background:var(--mocha);color:var(--sand)}
+.feature p{max-width:32em}
+/* sections */
+section{padding:72px 0}
+.head{text-align:center;margin-bottom:40px}
+.head p{color:var(--mocha);margin-top:8px}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat{border-radius:50% 50% 14px 14px / 38% 38% 14px 14px;padding:56px 18px 28px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;background:var(--beige);transition:transform .2s}
+.cat:hover{transform:translateY(-4px)}
+.cat:nth-child(2n){background:var(--roast);color:var(--sand)}
+.cat svg{width:76px;height:76px}
+.drinks{background:var(--sand)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.card{background:var(--white);border-radius:6px 6px 22px 6px;overflow:hidden;display:flex;flex-direction:column}
+.card .pic{height:150px;display:grid;place-items:center;background:var(--roast);color:var(--beige)}
+.card:nth-child(2n) .pic{background:var(--beige);color:var(--roast)}
+.card .pic svg{width:92px}
+.card div.t{padding:20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card p{font-size:.95rem;color:var(--mocha);flex:1}
+.card a{font-weight:700;border-bottom:2px solid var(--espresso);align-self:flex-start}
+/* rewards */
+.rewards{background:var(--espresso);color:var(--sand);text-align:center}
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:44px 0}
+.perk{border-top:2px solid var(--mocha);padding-top:20px;text-align:start}
+.perk p{color:var(--beige);margin-top:6px}
+/* app */
+.app .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.phone{justify-self:center;width:230px;aspect-ratio:9/18;border-radius:34px;background:var(--espresso);padding:12px;box-shadow:0 18px 40px rgba(42,24,16,.25)}
+.phone div{height:100%;border-radius:24px;background:var(--beige);color:var(--roast);display:grid;place-items:center;text-align:center;font:700 1.1rem var(--display);padding:16px}
+.phone svg{width:90px;margin-bottom:8px}
+.stores{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+/* locator */
+.locator{background:var(--beige);text-align:center}
+.cities{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.cities button{font:600 1rem var(--body);padding:8px 22px;border-radius:999px;border:2px solid var(--roast);background:transparent;color:var(--roast);cursor:pointer}
+.cities button:hover,.cities button[aria-pressed=true]{background:var(--roast);color:var(--white)}
+#cityNote{margin-top:20px;min-height:1.7em;font-weight:600}
+/* news */
+.news{text-align:center}
+.news form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.news input{font:400 1rem var(--body);padding:12px 20px;border-radius:999px;border:2px solid var(--roast);min-width:min(320px,100%);background:var(--white);color:var(--ink)}
+#nlNote{margin-top:14px;font-weight:600;color:var(--mocha);min-height:1.7em}
+/* footer */
+footer{background:var(--espresso);color:var(--beige);padding:56px 0 28px;font-size:.95rem}
+.cols{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px}
+footer h3{font-size:1.05rem;color:var(--white);margin-bottom:10px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer a:hover{color:var(--white);text-decoration:underline}
+.fb{display:flex;align-items:center;gap:10px;font:700 1.2rem var(--display);color:var(--white)}
+.fb svg{width:52px}
+.legal{border-top:1px solid var(--roast);margin-top:36px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--mocha)}
+.legal span{color:var(--beige)}
+@media(max-width:900px){
+ nav,.find{display:none}.bar{gap:12px}
+ .hero .wrap,.feature,.app .wrap{grid-template-columns:1fr}
+ .hero .wrap{min-height:0}.hero-art{order:-1}.hero-art svg{width:min(260px,70%)}
+ .feature.flip .art{order:0}
+ .cats,.grid{grid-template-columns:repeat(2,1fr)}
+ .perks{grid-template-columns:1fr}.cols{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){.brand span{display:none}.tools .btn.ghost{display:none}.cats,.grid{grid-template-columns:1fr}.cols{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.steam path{animation:none;opacity:.6}html{scroll-behavior:auto}.cat{transition:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <symbol id="logo" viewBox="0 0 120 120">
+  <circle cx="60" cy="60" r="58" fill="#2a1810"/>
+  <circle cx="60" cy="60" r="53" fill="none" stroke="#e9d9c0" stroke-width="1.2"/>
+  <path id="ring" d="M60 60 m-43 0 a43 43 0 1 1 86 0 a43 43 0 1 1 -86 0" fill="none"/>
+  <text font-family="Reem Kufi,Cairo,sans-serif" font-size="11" font-weight="700" fill="#e9d9c0" letter-spacing="1"><textPath href="#ring" textLength="262">COSTA COFFEE ★ كوستا كوفي ★</textPath></text>
+  <g transform="rotate(32 60 60)"><ellipse cx="60" cy="60" rx="19" ry="27" fill="#e9d9c0"/>
+  <path d="M60 33 C48 46 72 58 60 71 C54 77 58 82 60 87" fill="none" stroke="#2a1810" stroke-width="4.5" stroke-linecap="round"/></g>
+ </symbol>
+ <symbol id="cup" viewBox="0 0 200 200">
+  <path d="M38 78h112v44q0 44-56 44t-56-44z" fill="currentColor"/>
+  <path d="M150 90h12q20 0 20 22t-22 22h-10" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>
+  <ellipse cx="94" cy="176" rx="70" ry="8" fill="currentColor" opacity=".45"/>
+ </symbol>
+</svg>
+
+<div class="promo" data-ar="جديد: لاتيه التمر والهيل متاح الآن في كل الفروع" >New: Date &amp; cardamom latte is now in every store</div>
+
+<header>
+ <div class="wrap bar">
+  <a class="brand" href="#top" aria-label="Costa Coffee"><svg role="img" aria-hidden="true"><use href="#logo"/></svg><span data-ar="كوستا كوفي">Costa Coffee</span></a>
+  <nav aria-label="Main">
+   <a href="#menu" data-ar="القائمة">Menu</a>
+   <a href="#rewards" data-ar="المكافآت">Rewards</a>
+   <a href="#app" data-ar="التطبيق">App</a>
+   <a href="#stores" data-ar="الفروع">Stores</a>
+  </nav>
+  <div class="tools">
+   <a class="find" href="#stores" data-ar="ابحث عن فرع">Find a store</a>
+   <button class="lang" id="lang" type="button" aria-label="Switch language">العربية</button>
+   <a class="btn ghost" href="#rewards" data-ar="تسجيل الدخول">Sign in</a>
+   <a class="btn" href="#rewards" data-ar="انضم الآن">Join now</a>
+  </div>
+ </div>
+</header>
+
+<main id="top">
+<section class="hero" style="padding:0">
+ <div class="wrap">
+  <div>
+   <h1 data-ar="صباحك، محمّص على مهل.">Your morning, roasted slow.</h1>
+   <p data-ar="حبوب مختارة بعناية، تُحمَّص يومياً وتُقدَّم دافئة بين يديك. اطلب مسبقاً ومرّ لتستلم.">Carefully chosen beans, roasted daily and handed to you warm. Order ahead and just walk in.</p>
+   <div class="acts"><a class="btn light" href="#menu" data-ar="اطلب الآن">Order now</a><a class="btn ghost" href="#menu" data-ar="تصفّح القائمة">Browse the menu</a></div>
+  </div>
+  <div class="hero-art">
+   <svg viewBox="0 0 260 260" role="img" aria-label="Coffee cup">
+    <circle cx="130" cy="140" r="118" fill="#4a2c1d"/>
+    <g class="steam"><path d="M100 80q-14-18 0-34t0-30"/><path d="M130 80q-14-18 0-34t0-30"/><path d="M160 80q-14-18 0-34t0-30"/></g>
+    <use href="#cup" x="30" y="50" width="200" height="200" style="color:#e9d9c0"/>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<div class="feature f1">
+ <div class="art"><svg role="img" aria-label="Latte"><use href="#cup" width="100%" height="100%"/></svg></div>
+ <div>
+  <h2 data-ar="لاتيه التمر والهيل">Date &amp; cardamom latte</h2>
+  <p data-ar="إسبريسو غني مع حليب مخفوق وحلاوة التمر ولمسة هيل. نكهة محلية في كوب واحد.">Rich espresso, steamed milk, the sweetness of dates and a touch of cardamom. A local flavor in one cup.</p>
+  <a class="btn" href="#menu" data-ar="اطلبه الآن">Order it now</a>
+ </div>
+</div>
+<div class="feature f2 flip">
+ <div class="art"><svg role="img" aria-label="Beans"><use href="#logo" width="100%" height="100%"/></svg></div>
+ <div>
+  <h2 data-ar="حبوب تُحمَّص كل يوم">Beans roasted every day</h2>
+  <p data-ar="نختار حبوبنا من مزارع نعرف أصحابها، ونحمّصها محلياً لتصلك طازجة. خذ كيساً معك إلى البيت.">We pick our beans from farms whose growers we know, and roast them locally so they reach you fresh. Take a bag home.</p>
+  <a class="btn ghost" href="#menu" data-ar="تسوّق الحبوب">Shop beans</a>
+ </div>
+</div>
+
+<section id="menu">
+ <div class="wrap">
+  <div class="head"><h2 data-ar="تصفّح القائمة">Explore the menu</h2></div>
+  <div class="cats">
+   <a class="cat" href="#drinks"><svg aria-hidden="true"><use href="#cup"/></svg><h3 data-ar="قهوة ساخنة">Hot coffee</h3></a>
+   <a class="cat" href="#drinks"><svg aria-hidden="true"><use href="#cup"/></svg><h3 data-ar="مشروبات باردة">Cold drinks</h3></a>
+   <a class="cat" href="#drinks"><svg aria-hidden="true"><use href="#cup"/></svg><h3 data-ar="شاي">Tea</h3></a>
+   <a class="cat" href="#drinks"><svg aria-hidden="true"><use href="#cup"/></svg><h3 data-ar="مخبوزات وحلويات">Bakery</h3></a>
+  </div>
+ </div>
+</section>
+
+<section class="drinks" id="drinks">
+ <div class="wrap">
+  <div class="head"><h2 data-ar="الأكثر طلباً">Most loved</h2><p data-ar="اختيارات زوارنا هذا الأسبوع">Picks from our guests this week</p></div>
+  <div class="grid">
+   <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#cup" width="92" height="92"/></svg></div><div class="t"><h3 data-ar="سبانش لاتيه">Spanish latte</h3><p data-ar="إسبريسو مع حليب مكثف محلّى وحليب مخفوق.">Espresso with sweetened condensed milk and steamed milk.</p><a href="#menu" data-ar="اطلب">Order</a></div></article>
+   <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#cup" width="92" height="92"/></svg></div><div class="t"><h3 data-ar="كولد برو">Cold brew</h3><p data-ar="منقوع على البارد لمدة ١٦ ساعة، ناعم وقليل الحموضة.">Steeped cold for 16 hours. Smooth and low in acidity.</p><a href="#menu" data-ar="اطلب">Order</a></div></article>
+   <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#cup" width="92" height="92"/></svg></div><div class="t"><h3 data-ar="كراميل ماكياتو">Caramel macchiato</h3><p data-ar="طبقات من الحليب والإسبريسو وصلصة الكراميل.">Layers of milk, espresso and caramel sauce.</p><a href="#menu" data-ar="اطلب">Order</a></div></article>
+   <article class="card"><div class="pic"><svg aria-hidden="true"><use href="#cup" width="92" height="92"/></svg></div><div class="t"><h3 data-ar="كرواسون بالزبدة">Butter croissant</h3><p data-ar="مخبوز طازجاً كل صباح، مقرمش من الخارج.">Baked fresh each morning, crisp outside and soft within.</p><a href="#menu" data-ar="اطلب">Order</a></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="rewards" id="rewards">
+ <div class="wrap">
+  <h2 data-ar="انضم إلى مكافآت كوستا">Join Costa Rewards</h2>
+  <div class="perks">
+   <div class="perk"><h3 data-ar="اجمع نجومك">Earn stars</h3><p data-ar="كل طلب يقرّبك من مشروب مجاني.">Every order moves you closer to a free drink.</p></div>
+   <div class="perk"><h3 data-ar="اطلب مسبقاً">Order ahead</h3><p data-ar="جهّز طلبك من التطبيق واستلمه دون انتظار.">Prepare your order in the app and collect it without waiting.</p></div>
+   <div class="perk"><h3 data-ar="هدية في عيد ميلادك">A birthday treat</h3><p data-ar="مشروب على حسابنا في شهر ميلادك.">A drink on us during your birthday month.</p></div>
+  </div>
+  <a class="btn light" href="#top" data-ar="انضم مجاناً">Join for free</a>
+ </div>
+</section>
+
+<section class="app" id="app">
+ <div class="wrap">
+  <div>
+   <h2 data-ar="قهوتك في جيبك">Your coffee, in your pocket</h2>
+   <p style="margin-top:14px;max-width:30em" data-ar="اطلب، ادفع، واجمع المكافآت من تطبيق كوستا كوفي.">Order, pay and collect rewards with the Costa Coffee app.</p>
+   <div class="stores"><a class="btn" href="#top">App Store</a><a class="btn" href="#top">Google Play</a></div>
+  </div>
+  <div class="phone"><div><span><svg aria-hidden="true"><use href="#logo"/></svg><br><span data-ar="جاهز للاستلام">Ready for pickup</span></span></div></div>
+ </div>
+</section>
+
+<section class="locator" id="stores">
+ <div class="wrap">
+  <h2 data-ar="ابحث عن أقرب فرع">Find your nearest store</h2>
+  <div class="cities" role="group" aria-label="Cities">
+   <button type="button" data-ar="القاهرة" data-c="cairo">Cairo</button>
+   <button type="button" data-ar="الإسكندرية" data-c="alex">Alexandria</button>
+   <button type="button" data-ar="الجيزة" data-c="giza">Giza</button>
+   <button type="button" data-ar="المنصورة" data-c="man">Mansoura</button>
+  </div>
+  <p id="cityNote" aria-live="polite"></p>
+ </div>
+</section>
+
+<section class="news">
+ <div class="wrap">
+  <h2 data-ar="عروضنا تصلك أولاً">Get offers first</h2>
+  <form id="nl"><input type="email" required aria-label="Email" placeholder="you@email.com"><button class="btn" type="submit" data-ar="اشترك">Subscribe</button></form>
+  <p id="nlNote" aria-live="polite"></p>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="cols">
+   <div><div class="fb"><svg aria-hidden="true"><use href="#logo"/></svg><span data-ar="كوستا كوفي">Costa Coffee</span></div><p style="margin-top:12px;max-width:22em" data-ar="قهوة محمّصة بعناية ومقدّمة بدفء.">Coffee roasted with care and served with warmth.</p></div>
+   <div><h3 data-ar="عن كوستا">About Costa</h3><ul><li><a href="#top" data-ar="قصتنا">Our story</a></li><li><a href="#top" data-ar="الوظائف">Careers</a></li><li><a href="#top" data-ar="الاستدامة">Sustainability</a></li></ul></div>
+   <div><h3 data-ar="خدمة العملاء">Customer care</h3><ul><li><a href="#top" data-ar="تواصل معنا">Contact us</a></li><li><a href="#top" data-ar="الأسئلة الشائعة">FAQ</a></li><li><a href="#stores" data-ar="الفروع">Stores</a></li></ul></div>
+   <div><h3 data-ar="تابعنا">Follow us</h3><ul><li><a href="#top">Instagram</a></li><li><a href="#top">Facebook</a></li><li><a href="#top">TikTok</a></li></ul></div>
+  </div>
+  <div class="legal"><span>© 2026 Costa Coffee</span><span><a href="#top" data-ar="الخصوصية">Privacy</a> · <a href="#top" data-ar="الشروط">Terms</a></span></div>
+ </div>
+</footer>
+
+<script>
+(function(){
+ var els=[].slice.call(document.querySelectorAll('[data-ar]'));
+ els.forEach(function(e){e.setAttribute('data-en',e.textContent.trim());});
+ var btn=document.getElementById('lang'),cityNote=document.getElementById('cityNote'),nlNote=document.getElementById('nlNote');
+ var T={en:{cityNote:'Stores in this city are listed here once locations are added.',nl:'Thanks! You are subscribed.',lang:'العربية',ph:'you@email.com'},
+        ar:{cityNote:'ستظهر فروع هذه المدينة هنا عند إضافة العناوين.',nl:'شكراً! تم اشتراكك.',lang:'English',ph:'بريدك@الإلكتروني'}};
+ var cur='en',picked=false,sent=false;
+ function set(l){
+  cur=l;var h=document.documentElement;h.lang=l;h.dir=l==='ar'?'rtl':'ltr';
+  els.forEach(function(e){e.textContent=e.getAttribute('data-'+l);});
+  btn.textContent=T[l].lang;
+  document.querySelector('#nl input').placeholder=T[l].ph;
+  if(picked)cityNote.textContent=T[l].cityNote;
+  if(sent)nlNote.textContent=T[l].nl;
+  document.title=l==='ar'?'كوستا كوفي':'Costa Coffee';
+  try{localStorage.setItem('bur-lang',l);}catch(e){}
+ }
+ btn.addEventListener('click',function(){set(cur==='en'?'ar':'en');});
+ [].forEach.call(document.querySelectorAll('.cities button'),function(b){
+  b.addEventListener('click',function(){
+   [].forEach.call(document.querySelectorAll('.cities button'),function(x){x.setAttribute('aria-pressed','false');});
+   b.setAttribute('aria-pressed','true');picked=true;cityNote.textContent=T[cur].cityNote;});
+ });
+ document.getElementById('nl').addEventListener('submit',function(e){e.preventDefault();sent=true;nlNote.textContent=T[cur].nl;});
+ var saved=null;try{saved=localStorage.getItem('bur-lang');}catch(e){}
+ if(saved==='ar')set('ar');
+})();
+</script>
+</body>
+</html>
